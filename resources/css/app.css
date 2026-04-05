@@ -1,0 +1,42 @@
+/* Import Tailwind (WAJIB untuk Laravel Breeze/Jetstream) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ======================
+   CUSTOM SEAT STYLE
+====================== */
+
+.seat-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.seat {
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: default;
+    transition: 0.2s ease;
+}
+
+/* Kursi tersedia */
+.available {
+    background-color: #22c55e;
+}
+
+/* Kursi terisi */
+.occupied {
+    background-color: #ef4444;
+}
+
+/* Hover effect biar hidup */
+.seat:hover {
+    transform: scale(1.08);
+}
