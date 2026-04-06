@@ -19,28 +19,29 @@
             height: 100vh;
         }
 
-        /* CONTAINER */
         .container {
             width: 100%;
-            max-width: 340px; /* DIPERKECIL BIAR GA MELEBAR */
+            max-width: 340px;
             text-align: center;
         }
 
-        /* LOGO */
         .logo {
             margin-bottom: 10px;
         }
 
         .logo img {
-            width: 200px; /* LEBIH PROPORSIONAL */
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+        cursor: default;
+        user-select: none;
+        -webkit-user-drag: none; /* biar ga bisa di-drag */
         }
 
-        /* INPUT GROUP */
         .input-group {
             margin-bottom: 18px;
         }
 
-        /* INPUT */
         input {
             width: 100%;
             padding: 14px 18px;
@@ -51,7 +52,6 @@
             font-size: 14px;
         }
 
-        /* PASSWORD */
         .password-wrapper {
             position: relative;
         }
@@ -65,7 +65,6 @@
             font-size: 14px;
         }
 
-        /* BUTTON */
         .btn-login {
             width: 100%;
             padding: 14px;
@@ -78,7 +77,10 @@
             cursor: pointer;
         }
 
-        /* LINK */
+        .btn-login:hover {
+            background: #5aa63d;
+        }
+
         .link {
             margin-top: 12px;
             display: block;
@@ -87,7 +89,6 @@
             font-size: 13px;
         }
 
-        /* REGISTER */
         .register {
             margin-top: 8px;
             font-size: 13px;
@@ -98,7 +99,6 @@
             text-decoration: none;
         }
 
-        /* DIVIDER */
         .divider {
             display: flex;
             align-items: center;
@@ -117,7 +117,6 @@
             color: #888;
         }
 
-        /* SOCIAL */
         .social-text {
             font-size: 13px;
             margin-bottom: 12px;
@@ -133,8 +132,22 @@
         .social-icons img {
             width: 36px;
             cursor: pointer;
+            transition: 0.2s;
         }
 
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo img {
+                width: 160px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -143,7 +156,7 @@
 
     <!-- LOGO -->
     <div class="logo">
-        <img src="/assets/logo.png" alt="Logo">
+        <img src="{{ asset('assets/logo.png') }}" alt="Logo">
     </div>
 
     <!-- FORM LOGIN -->
@@ -152,12 +165,12 @@
 
         <!-- EMAIL -->
         <div class="input-group">
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required autofocus>
         </div>
 
         <!-- PASSWORD -->
         <div class="input-group password-wrapper">
-            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="password" id="password" placeholder="Password" required minlength="6">
             <span class="toggle-password" onclick="togglePassword()">👁</span>
         </div>
 
@@ -172,29 +185,28 @@
             Don't have an account?
             <a href="{{ route('register') }}">Register here</a>
         </div>
-
-        <!-- DIVIDER -->
-        <div class="divider">
-            <hr><span>OR</span><hr>
-        </div>
-
-        <!-- SOCIAL TEXT -->
-        <div class="social-text">
-            Continue with Social Networks
-        </div>
-
-        <!-- SOCIAL LOGIN -->
-        <div class="social-icons">
-            <a href="/auth/google">
-                <img src="/assets/ic_google.png" alt="Google">
-            </a>
-
-            <a href="/auth/facebook">
-                <img src="/assets/ic_facebook.webp" alt="Facebook">
-            </a>
-        </div>
-
     </form>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+        <hr><span>OR</span><hr>
+    </div>
+
+    <!-- SOCIAL TEXT -->
+    <div class="social-text">
+        Continue with Social Network
+    </div>
+
+    <!-- SOCIAL LOGIN -->
+    <div class="social-icons">
+        <a href="#" onclick="alert('Login Google belum tersedia')">
+            <img src="{{ asset('assets/ic_google.png') }}" alt="Google">
+        </a>
+
+        <a href="#" onclick="alert('Login Facebook belum tersedia')">
+            <img src="{{ asset('assets/ic_facebook.webp') }}" alt="Facebook">
+        </a>
+    </div>
 
 </div>
 
