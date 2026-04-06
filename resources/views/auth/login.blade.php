@@ -1,47 +1,209 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 100%;
+            max-width: 340px; /* DIPERKECIL BIAR GA MELEBAR */
+            text-align: center;
+        }
+
+        /* LOGO */
+        .logo {
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            width: 200px; /* LEBIH PROPORSIONAL */
+        }
+
+        /* INPUT GROUP */
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        /* INPUT */
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            background: #ffffff;
+            font-size: 14px;
+        }
+
+        /* PASSWORD */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* BUTTON */
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 25px;
+            background: #6cc24a;
+            color: white;
+            font-size: 15px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        /* LINK */
+        .link {
+            margin-top: 12px;
+            display: block;
+            color: #6cc24a;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        /* REGISTER */
+        .register {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        .register a {
+            color: #6cc24a;
+            text-decoration: none;
+        }
+
+        /* DIVIDER */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .divider hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .divider span {
+            margin: 0 10px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* SOCIAL */
+        .social-text {
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .social-icons img {
+            width: 36px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="/assets/logo.png" alt="Logo">
+    </div>
+
+    <!-- FORM LOGIN -->
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- EMAIL -->
+        <div class="input-group">
+            <input type="email" name="email" placeholder="Email" required>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <!-- PASSWORD -->
+        <div class="input-group password-wrapper">
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePassword()">👁</span>
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
+        <!-- BUTTON LOGIN -->
+        <button type="submit" class="btn-login">Login</button>
+
+        <!-- FORGOT PASSWORD -->
+        <a href="{{ route('password.request') }}" class="link">Forgot Password?</a>
+
+        <!-- REGISTER -->
+        <div class="register">
+            Don't have an account?
+            <a href="{{ route('register') }}">Register here</a>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+        <!-- DIVIDER -->
+        <div class="divider">
+            <hr><span>OR</span><hr>
         </div>
+
+        <!-- SOCIAL TEXT -->
+        <div class="social-text">
+            Continue with Social Networks
+        </div>
+
+        <!-- SOCIAL LOGIN -->
+        <div class="social-icons">
+            <a href="/auth/google">
+                <img src="/assets/ic_google.png" alt="Google">
+            </a>
+
+            <a href="/auth/facebook">
+                <img src="/assets/ic_facebook.webp" alt="Facebook">
+            </a>
+        </div>
+
     </form>
-</x-guest-layout>
+
+</div>
+
+<script>
+function togglePassword() {
+    let input = document.getElementById("password");
+    input.type = input.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>
