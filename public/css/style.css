@@ -1,41 +1,42 @@
-.seat {
-    width: 60px;
-    height: 60px;
-    margin: 5px;
-    display: inline-block;
+body {
+    font-family: Arial;
     text-align: center;
-    line-height: 60px;
-    border-radius: 10px;
-    color: white;
+    }
+
+#seats-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    }
+
+.seat {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
     border: none;
+    border-radius: 10px;
+    font-size: 18px;
     cursor: pointer;
-    font-weight: bold;
     transition: 0.2s;
-}
-
-.available {
-    background: green;
-}
-
-.occupied {
-    background: red;
-}
+    }
 
 .seat:hover {
-    opacity: 0.8;
-    transform: scale(1.02);
-}
+    transform: scale(1.1);
+    }
+
+.available {
+    background-color: green;
+    color: white;
+    }
+
+.occupied {
+    background-color: red;
+    color: white;
+    }
+
 .btn-back {
     display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    background-color: #3498db;
-    color: white;
+    margin-top: 20px;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-.btn-back:hover {
-    background-color: #2980b9;
-}
+    }
