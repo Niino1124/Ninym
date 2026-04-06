@@ -21,7 +21,7 @@
         img {
             width: 300px;
             margin-bottom: 20px;
-            animation: fadeIn 3s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -33,7 +33,6 @@
 <body>
 
     <img src="{{ asset('assets/logo.png') }}" alt="Logo">
-    <p>Loading...</p>
 
 </body>
 </html>
