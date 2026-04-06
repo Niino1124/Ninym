@@ -32,7 +32,7 @@
         }
 
         .logo img {
-            width: 200px; /* LEBIH PROPORSIONAL */
+            width: 205px; /* LEBIH PROPORSIONAL */
         }
 
         /* INPUT GROUP */
