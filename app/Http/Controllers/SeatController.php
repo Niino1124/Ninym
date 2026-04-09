@@ -46,4 +46,33 @@ class SeatController extends Controller
 
         return view('dashboard', compact('seats'));
     }
+
+    public function update(Request $request)
+    {
+        $this->database->getReference('seats/' . $request->seat_id)
+            ->update([
+                'status' => 'occupied',
+                'name' => $request->name,
+                'orders' => $request->orders,
+            ]);
+
+        return back();
+    }
+
+    public function clear($id)
+    {
+        $this->database->getReference('seats/' . $id)
+            ->update([
+                'status' => 'available',
+                'name' => null,
+                'orders' => null,
+            ]);
+
+        // kalau request dari AJAX
+        if (request()->ajax()) {
+            return response()->json(['success' => true]);
+        }
+
+        return back();
+    }
 }

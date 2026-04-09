@@ -27,4 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/seats', [SeatController::class, 'index'])->name('seats.index');
     Route::post('/seats/{id}/toggle', [SeatController::class, 'toggle'])->name('seats.toggle');
 
+    Route::post('/seat/update', [SeatController::class, 'update'])
+    ->name('seat.update')
+    ->middleware('auth');
+
+    Route::get('/seat/clear/{id}', [SeatController::class, 'clear'])
+    ->middleware('auth');
+
 });
