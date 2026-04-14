@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SeatController;
 use Illuminate\Support\Facades\Route;
 
 // SPLASH
@@ -10,28 +9,28 @@ Route::get('/', function () {
 });
 
 // DASHBOARD (setelah login)
-Route::get('/dashboard', [SeatController::class, 'dashboard'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+//Route::get('/dashboard', [SeatController::class, 'dashboard'])
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
 
 // ROUTE LOGIN, REGISTER, FORGOT (dari Laravel Breeze)
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
 
 // ROUTE SETELAH LOGIN
-Route::middleware('auth')->group(function () {
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/seats', [SeatController::class, 'index'])->name('seats.index');
-    Route::post('/seats/{id}/toggle', [SeatController::class, 'toggle'])->name('seats.toggle');
-
-    Route::post('/seat/update', [SeatController::class, 'update'])
-    ->name('seat.update')
-    ->middleware('auth');
-
-    Route::get('/seat/clear/{id}', [SeatController::class, 'clear'])
-    ->middleware('auth');
-
+Route::get('/', function () {
+    return view('dashboard');
 });
+
+    //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    //Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //Route::get('/seats', [SeatController::class, 'index'])->name('seats.index');
+    //Route::post('/seats/{id}/toggle', [SeatController::class, 'toggle'])->name('seats.toggle');
+
+    //Route::post('/seat/update', [SeatController::class, 'update'])
+    //->name('seat.update')
+    //->middleware('auth');
+
+    //Route::get('/seat/clear/{id}', [SeatController::class, 'clear'])
+    //->middleware('auth');
