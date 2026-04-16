@@ -17,6 +17,7 @@ onValue(seatsRef, (snapshot) => {
         el.dataset.status = data[id].status;
         el.dataset.name = data[id].name || '';
         el.dataset.orders = data[id].orders || '';
+        el.dataset.userId = data[id].userId || ''; // 🔥 TAMBAHAN
     });
 });
 
@@ -41,7 +42,8 @@ window.submitSeat = function(e) {
     update(ref(db, 'seats/' + id), {
         status: "occupied",
         name: window.username,
-        orders: orders
+        orders: orders,
+        userId: auth.currentUser.uid
     }).then(() => {
 
         closeModal();
@@ -56,13 +58,23 @@ window.submitSeat = function(e) {
 
 // kosongkan kursi
 window.clearSeat = function() {
+
+    const el = document.querySelector(`.seat[data-id='${currentSeatId}']`);
+    const ownerId = el.dataset.userId;
+
+    // 🔥 CEK PEMILIK
+    if (ownerId !== auth.currentUser.uid) {
+        toast('error', 'Kursi ini bukan milik anda!');
+        return;
+    }
+
     update(ref(db, 'seats/' + currentSeatId), {
         status: "available",
         name: null,
-        orders: null
+        orders: null,
+        userId : null // 🔥 reset juga
     });
 
     closeModal();
-
     toast('success', 'Kursi dikosongkan');
 };

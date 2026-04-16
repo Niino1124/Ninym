@@ -16,6 +16,9 @@ import {
     signOut 
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+window.isLoggedIn = false;
+window.pendingSeat = null;
+
 // LOGIN
 window.openLogin = function () {
     document.getElementById('loginModal').style.display = 'flex';
@@ -76,8 +79,8 @@ window.doRegister = function () {
             closeRegister();
             toast('success', 'Register berhasil');
         })
-        .catch((error) => {
-            toast('error', error.message);
+        .catch((err) => {
+            toast('error', err.message);
         });
 };
 
@@ -94,6 +97,9 @@ onAuthStateChanged(auth, async (user) => {
     const logoutBtn = document.getElementById("logoutBtn");
 
     if (user) {
+        window.isLoggedIn = true; // 🔥 TAMBAHKAN DI SINI
+        window.currentUserId = user.uid; // 🔥 INI YANG DITAMBAHKAN
+
         const snapshot = await get(ref(db, 'users/' + user.uid));
 
         if (snapshot.exists()) {
@@ -108,7 +114,21 @@ onAuthStateChanged(auth, async (user) => {
         loginBtn.classList.add("hidden");
         registerBtn.classList.add("hidden");
         logoutBtn.classList.remove("hidden");
+
+        // 🔥 TAMBAHAN (LANJUTKAN KURSI YANG TADI DIKLIK)
+        if (window.pendingSeat) {
+            let seat = window.pendingSeat;
+            window.pendingSeat = null;
+
+            setTimeout(() => {
+                openModal(seat);
+            }, 300);
+        }
+
     } else {
+        window.isLoggedIn = false; // 🔥 TAMBAHAN
+        window.currentUserId = null; // 🔥 INI JUGA WAJIB
+
         emailEl.innerText = "Guest";
         window.username = null;
 
@@ -128,7 +148,7 @@ window.closeRegister = () => document.getElementById('registerModal').style.disp
 window.toast = function(icon, title) {
     Swal.fire({
         toast: true,
-        position: 'top-end',
+        position: 'top',
         icon: icon,
         title: title,
         showConfirmButton: false,
