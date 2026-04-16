@@ -1,25 +1,36 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SeatController;
 use Illuminate\Support\Facades\Route;
 
-
+// SPLASH
 Route::get('/', function () {
-    return view('welcome');
+    return view('splash');
 });
 
-Route::get('/dashboard', function () {
+// DASHBOARD (setelah login)
+//Route::get('/dashboard', [SeatController::class, 'dashboard'])
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
+
+// ROUTE LOGIN, REGISTER, FORGOT (dari Laravel Breeze)
+//require __DIR__.'/auth.php';
+
+// ROUTE SETELAH LOGIN
+Route::get('/', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/seats', [SeatController::class, 'index'])->name('seats.index');
-    Route::post('/seats/{id}/toggle', [SeatController::class, 'toggle'])->name('seats.toggle');
-    Route::get('/dashboard', [SeatController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 });
 
-require __DIR__.'/auth.php';
+    //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    //Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //Route::get('/seats', [SeatController::class, 'index'])->name('seats.index');
+    //Route::post('/seats/{id}/toggle', [SeatController::class, 'toggle'])->name('seats.toggle');
+
+    //Route::post('/seat/update', [SeatController::class, 'update'])
+    //->name('seat.update')
+    //->middleware('auth');
+
+    //Route::get('/seat/clear/{id}', [SeatController::class, 'clear'])
+    //->middleware('auth');
