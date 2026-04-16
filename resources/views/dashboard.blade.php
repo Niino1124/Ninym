@@ -55,6 +55,7 @@
     <!-- SCRIPT KHUSUS UI -->
     <script>
         let currentSeatId = null;
+        let pendingSeat = null; // 🔥 simpan klik sebelum login
 
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".seat").forEach(seat => {
@@ -62,8 +63,19 @@
             });
         });
 
+
+
         function openModal(el) {
             let id = el.dataset.id;
+
+            // 🔥 CEK LOGIN
+            if (!window.isLoggedIn) {
+                window.pendingSeat = el;
+                toast('warning', 'Silahkan Login Terlebih Dahulu!');
+                openLogin();
+                return;
+            }
+
             let status = el.dataset.status;
             let name = el.dataset.name;
             let orders = el.dataset.orders;
@@ -78,16 +90,28 @@
 
                 document.getElementById('detail_name').innerText = name || '-';
                 document.getElementById('detail_orders').innerText = orders || '-';
+
+                // 🔥 CEK OWNER (AMAN)
+                let ownerId = el.dataset.userId || null;
+                let currentUserId = window.currentUserId || null;
+
+                const btnKosongkan = document.querySelector('#detailSection button.bg-red-500');
+
+                if (btnKosongkan) {
+                    if (ownerId && currentUserId && ownerId === currentUserId) {
+                        btnKosongkan.style.display = 'inline-block';
+                    } else {
+                        btnKosongkan.style.display = 'none';
+                    }
+                }
+
             } else {
                 document.getElementById('formSection').style.display = 'block';
                 document.getElementById('detailSection').style.display = 'none';
 
                 document.getElementById('seat_id').value = id;
-
                 document.getElementById('input_name').value = window.username || '';
-
                 document.getElementById('input_orders').value = '';
-                
             }
         }
 
