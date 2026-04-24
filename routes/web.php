@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // SPLASH
-Route::get('/', function () {
+Route::get('.', function () {
     return view('splash');
 });
 
@@ -18,7 +18,23 @@ Route::get('/', function () {
 
 // ROUTE SETELAH LOGIN
 Route::get('/', function () {
-    return view('dashboard');
+    return view('landing');
+});
+
+Route::get('/reserve', function () {
+    return view('reserve');
+});
+
+Route::get('/signup', function () {
+    return view('signup');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/userdashboard', function () {
+    return view('userdashboard');
 });
 
     //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

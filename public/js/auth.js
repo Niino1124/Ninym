@@ -19,11 +19,6 @@ import {
 window.isLoggedIn = false;
 window.pendingSeat = null;
 
-// LOGIN
-window.openLogin = function () {
-    document.getElementById('loginModal').style.display = 'flex';
-};
-
 window.doLogin = function () {
     const email = document.getElementById('login_email').value;
     const password = document.getElementById('login_password').value;
@@ -33,14 +28,9 @@ window.doLogin = function () {
             closeLogin();
             toast('success', 'Login berhasil');
         })
-        .catch((err) => {
+        .catch((error) => {
             toast('error', error.message);
         });
-};
-
-// REGISTER
-window.openRegister = function () {
-    document.getElementById('registerModal').style.display = 'flex';
 };
 
 window.doRegister = function () {
@@ -63,23 +53,42 @@ window.doRegister = function () {
         return;
     }
 
+    if (!email || !password) {
+    toast('warning', 'Email dan password wajib diisi');
+    return;
+    }
+
+    if (password.length < 6) {
+        toast('warning', 'Password minimal 6 karakter');
+        return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
 
             const uid = userCredential.user.uid;
 
-            set(ref(db, 'users/' + uid), {
-                username: username
+            return set(ref(db, 'users/' + uid), {
+                username: username,
+                email: email
             });
-
+        })
+        .then(() => {
             window.username = username;
 
-            document.getElementById("userEmail").innerText = username;
+            const emailEl = document.getElementById("userEmail");
+            if (emailEl) {
+                emailEl.innerText = username;
+            }
 
-            closeRegister();
             toast('success', 'Register berhasil');
-        })
+
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1000);
+        })  
         .catch((err) => {
+            console.log("REGISTER ERROR:", err.code, err.message);
             toast('error', err.message);
         });
 };
@@ -91,50 +100,29 @@ window.logout = function () {
 
 // DETEKSI USER
 onAuthStateChanged(auth, async (user) => {
+    const authButtons = document.getElementById("authButtons");
+    const userBox = document.getElementById("userBox");
     const emailEl = document.getElementById("userEmail");
-    const loginBtn = document.getElementById("loginBtn");
-    const registerBtn = document.getElementById("registerBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
 
     if (user) {
-        window.isLoggedIn = true; // 🔥 TAMBAHKAN DI SINI
-        window.currentUserId = user.uid; // 🔥 INI YANG DITAMBAHKAN
+        if (authButtons) authButtons.classList.add("hidden");
+        if (userBox) userBox.classList.remove("hidden");
 
         const snapshot = await get(ref(db, 'users/' + user.uid));
 
+        let username = user.email;
+
         if (snapshot.exists()) {
-            const username = snapshot.val().username;
-            
-            window.username = username
-            emailEl.innerText = username; // 🔥 pakai username
-        } else {
-            emailEl.innerText = user.email; // fallback
+            username = snapshot.val().username;
         }
 
-        loginBtn.classList.add("hidden");
-        registerBtn.classList.add("hidden");
-        logoutBtn.classList.remove("hidden");
-
-        // 🔥 TAMBAHAN (LANJUTKAN KURSI YANG TADI DIKLIK)
-        if (window.pendingSeat) {
-            let seat = window.pendingSeat;
-            window.pendingSeat = null;
-
-            setTimeout(() => {
-                openModal(seat);
-            }, 300);
-        }
+        if (emailEl) emailEl.innerText = username;
 
     } else {
-        window.isLoggedIn = false; // 🔥 TAMBAHAN
-        window.currentUserId = null; // 🔥 INI JUGA WAJIB
+        if (authButtons) authButtons.classList.remove("hidden");
+        if (userBox) userBox.classList.add("hidden");
 
-        emailEl.innerText = "Guest";
-        window.username = null;
-
-        loginBtn.classList.remove("hidden");
-        registerBtn.classList.remove("hidden");
-        logoutBtn.classList.add("hidden");
+        if (emailEl) emailEl.innerText = "Guest";
     }
 });
 
