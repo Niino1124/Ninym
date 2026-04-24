@@ -25,8 +25,12 @@ window.doLogin = function () {
 
     signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-            closeLogin();
             toast('success', 'Login berhasil');
+
+            // ⏳ kasih delay biar toast kelihatan
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 1000);
         })
         .catch((error) => {
             toast('error', error.message);
