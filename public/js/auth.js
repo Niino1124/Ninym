@@ -116,9 +116,13 @@ onAuthStateChanged(auth, async (user) => {
 
         let username = user.email;
 
-        if (snapshot.exists()) {
+        if (snapshot.exists() && snapshot.val().username) {
             username = snapshot.val().username;
         }
+
+        // 🔥 SIMPAN GLOBAL
+        window.username = username;
+        window.userId = user.uid;
 
         if (emailEl) emailEl.innerText = username;
 

@@ -136,46 +136,56 @@
 <div class="bg-surface-container-low p-12 rounded-xl">
 <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-10 gap-4">
 <!-- Generative Slots -->
-<!-- Row 1 (Mix) -->
-<button class="aspect-square rounded-lg bg-surface-variant opacity-40 cursor-not-allowed flex items-center justify-center text-[10px] text-on-surface-variant font-bold">1A</button>
-<button class="aspect-square rounded-lg bg-surface-variant opacity-40 cursor-not-allowed flex items-center justify-center text-[10px] text-on-surface-variant font-bold">1B</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">1C</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">1D</button>
-<button class="aspect-square rounded-lg bg-primary text-white flex items-center justify-center text-[10px] font-bold shadow-md shadow-primary/20">1E</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">1F</button>
-<div class="hidden lg:block"></div> <!-- Aisle -->
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">1G</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">1H</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">1I</button>
+<!-- Row 1 -->
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1A">1A</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1B">1B</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1C">1C</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1D">1D</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1E">1E</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1F">1F</button>
+
+<div class="hidden lg:block"></div>
+
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1G">1G</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1H">1H</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="1I">1I</button>
+
 <!-- Row 2 -->
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">2A</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">2B</button>
-<button class="aspect-square rounded-lg bg-surface-variant opacity-40 cursor-not-allowed flex items-center justify-center text-[10px] text-on-surface-variant font-bold">2C</button>
-<button class="aspect-square rounded-lg bg-surface-variant opacity-40 cursor-not-allowed flex items-center justify-center text-[10px] text-on-surface-variant font-bold">2D</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">2E</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">2F</button>
-<div class="hidden lg:block"></div> <!-- Aisle -->
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">2G</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">2H</button>
-<button class="aspect-square rounded-lg bg-primary text-white flex items-center justify-center text-[10px] font-bold shadow-md shadow-primary/20">2I</button>
-<!-- Row 3 (Repeat Pattern) -->
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3A</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3B</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3C</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3D</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3E</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3F</button>
-<div class="hidden lg:block"></div> <!-- Aisle -->
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3G</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3H</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">3I</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2A">2A</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2B">2B</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2C">2C</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2D">2D</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2E">2E</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2F">2F</button>
+
+<div class="hidden lg:block"></div>
+
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2G">2G</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2H">2H</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="2I">2I</button>
+
+<!-- Row 3 -->
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3A">3A</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3B">3B</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3C">3C</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3D">3D</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3E">3E</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3F">3F</button>
+
+<div class="hidden lg:block"></div>
+
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3G">3G</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3H">3H</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="3I">3I</button>
+
 <!-- Row 4 -->
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">4A</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">4B</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">4C</button>
-<button class="aspect-square rounded-lg bg-surface-variant opacity-40 cursor-not-allowed flex items-center justify-center text-[10px] text-on-surface-variant font-bold">4D</button>
-<button class="aspect-square rounded-lg bg-surface-variant opacity-40 cursor-not-allowed flex items-center justify-center text-[10px] text-on-surface-variant font-bold">4E</button>
-<button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">4F</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="4A">4A</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="4B">4B</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="4C">4C</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="4D">4D</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="4E">4E</button>
+<button class="seat aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors" data-id="4F">4F</button>
+
 <div class="hidden lg:block"></div> <!-- Aisle -->
 <button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">4G</button>
 <button class="aspect-square rounded-lg border-2 border-primary-container flex items-center justify-center text-[10px] font-bold text-primary hover:bg-primary-fixed transition-colors">4H</button>
@@ -262,7 +272,7 @@
 <span class="text-primary">$326.00</span>
 </div>
 </div>
-<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-full font-bold text-sm shadow-xl shadow-primary/30 active:scale-[0.98] transition-transform">
+<button id="confirmBtn" class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-full font-bold text-sm shadow-xl shadow-primary/30 active:scale-[0.98] transition-transform">
                             Confirm Reservation
                         </button>
 <p class="text-[10px] text-center text-on-surface-variant mt-6 uppercase tracking-widest font-medium">
@@ -305,4 +315,166 @@
 </div>
 </footer>
 <script type="module" src="js/auth.js"></script>
+
+<script type="module">
+import { db, ref, onValue, auth, runTransaction } from "/js/firebase.js";
+import { get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    let selectedSeats = [];
+
+    const allSeats = document.querySelectorAll(".seat");
+
+    // =======================
+    // CLICK SEAT
+    // =======================
+    allSeats.forEach(seat => {
+        seat.addEventListener("click", () => {
+
+            let seatId = seat.dataset.id;
+
+            // ❌ kalau sudah dibooking
+            if (seat.classList.contains("booked")) {
+                alert("Kursi sudah dibooking!");
+                return;
+            }
+
+            // toggle (klik lagi = batal)
+            if (selectedSeats.includes(seatId)) {
+                selectedSeats = selectedSeats.filter(id => id !== seatId);
+                seat.classList.remove("bg-primary", "text-white");
+                return;
+            }
+
+            // max 4 kursi
+            if (selectedSeats.length >= 4) {
+                alert("Maksimal pilih 4 kursi!");
+                return;
+            }
+
+            selectedSeats.push(seatId);
+            seat.classList.add("bg-primary", "text-white");
+        });
+    });
+
+    // =======================
+    // CONFIRM BUTTON
+    // =======================
+    document.getElementById("confirmBtn").addEventListener("click", async () => {
+
+        if (selectedSeats.length === 0) {
+            alert("Pilih kursi dulu!");
+            return;
+        }
+
+        const username = window.username;
+        const userId = window.userId;
+
+        if (!userId) {
+            alert("Silakan login dulu!");
+            return;
+        }
+
+        if (!username) {
+            alert("Silakan login dulu!");
+            return;
+        }
+
+        for (const seatId of selectedSeats) {
+
+            await runTransaction(ref(db, "seats/" + seatId), (currentData) => {
+
+                // ❌ kalau sudah dibooking orang lain
+                if (currentData && currentData.status === "booked") {
+                    return; // batal
+                }
+
+                return {
+                    status: "booked",
+                    username: window.username,
+                    userId: window.userId,
+                    
+                };
+            });
+        }
+
+        // simpan user booking
+        await set(ref(db, "users/" + window.userId), {
+            username: window.username,
+            lastBooking: selectedSeats,
+            expiredAt: expiredAt
+        });
+
+        alert("Reservasi berhasil");
+        selectedSeats = [];
+
+    });
+
+    // =======================
+    // REALTIME UPDATE
+    // =======================
+    onValue(ref(db, "seats"), snapshot => {
+
+        const data = snapshot.val() || {};
+        const now = Date.now();
+
+        Object.keys(data).forEach(seatId => {
+
+            const seatData = data[seatId];
+            const seat = document.querySelector(`[data-id="${seatId}"]`);
+
+            if (!seat) return;
+
+            // ❌ kalau expired → reset kursi
+            if (seatData.expiredAt && now > seatData.expiredAt) {
+                set(ref(db, "seats/" + seatId), null);
+
+                seat.className = seat.className
+                    .replace("bg-surface-variant", "")
+                    .replace("opacity-40", "")
+                    .replace("cursor-not-allowed", "")
+                    .replace("booked", "");
+
+                seat.classList.add(
+                    "border-primary-container",
+                    "text-primary"
+                );
+
+                return;
+            }
+
+            // ✅ kalau masih booked
+            if (seatData.status === "booked") {
+
+                seat.classList.remove(
+                    "border-primary-container",
+                    "text-primary"
+                );
+
+                seat.classList.add(
+                    "bg-surface-variant",
+                    "opacity-40",
+                    "cursor-not-allowed",
+                    "booked"
+                );
+
+            } else {
+                // 🔥 kalau kosong → HARUS bisa diklik lagi
+                seat.classList.remove(
+                    "bg-surface-variant",
+                    "opacity-40",
+                    "cursor-not-allowed",
+                    "booked"
+                );
+
+                seat.classList.add(
+                    "border-primary-container",
+                    "text-primary"
+                );
+            }
+        });
+    });
+});
+</script>
 </body></html>
